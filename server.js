@@ -1,21 +1,20 @@
-const bodyParser = require("body-parser");
-const express= require("express");
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
-var app=express();
-app.set("view engine","ejs");
-app.use(express.static('public'));
-app.use(express.urlencoded({extended:true}));
-var items =[];
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
 
-var example ="working";
-app.get("/",function(req,res){
-    res.render("list",{ejes : items})
+let items = [];
+
+app.get('/', (req, res) => {
+  res.render('list', { items });
 });
 
-app.post("/",function(req,res){
-    var item =req.body.ele1;
-    items.push(item);
-    res.redirect("/");
+app.post('/', (req, res) => {
+  const newItem = req.body.newItem;
+  items.push(newItem);
+  res.redirect('/');
 });
 
 

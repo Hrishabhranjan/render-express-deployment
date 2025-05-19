@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>To-Do List</title>
-    <link rel="stylesheet" href="css/style.css">
-    </head>
+  <title>To-Do List</title>
+</head>
 <body>
-    <div class="Box">
-    <h1>TO DO LIST</h1>
-</div>
-<div class="box">
-    <% for(var i=0 ;i< ejes.length ;i++){%>
-        <div class="item">
-        <input type="checkbox">
-        <p<%= ejes[i] %></p>
-    <% } %>
-
-    <form action="/" method="POST">
-     <input type="text" name="ele1" placeholder="Enter your task ">
-    <button type="submit">+</button>
+  <h1>To-Do List</h1>
+  <ul>
+    <% items.forEach((item) => { %>
+      <li><%= item %></li>
+    <% }); %>
+  </ul>
+  <form action="/" method="post">
+    <input type="text" name="newItem" placeholder="Enter new item">
+    <button type="submit">Add</button>
+  </form>
+</body>
+</html>

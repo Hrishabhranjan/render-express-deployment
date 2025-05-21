@@ -11,10 +11,21 @@ app.get('/', (req, res) => {
   res.render('list', { items });
 });
 
-app.post('/', (req, res) => {
+/*app.post('/', (req, res) => {
   const newItem = req.body.newItem;
   items.push(newItem);
   res.redirect('/');
+});?*/
+app.post("/", function(req, res){
+  let newItem = req.body.newItem?.trim();
+
+  // Validate empty input
+  if (!newItem) {
+    return res.send("Error: Cannot submit empty task. Please go back and enter a valid item.");
+  }
+
+  items.push(newItem);
+  res.redirect("/");
 });
 
 

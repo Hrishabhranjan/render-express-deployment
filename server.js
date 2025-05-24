@@ -10,8 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
 mongoose.connect("mongodb://localhost:27017/todo", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+  
 }).then(() => {
     console.log("Connected to MongoDB");
 }).catch((err) => {

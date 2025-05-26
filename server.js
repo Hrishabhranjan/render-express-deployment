@@ -9,13 +9,16 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/todo", {
-  
+
+
+mongoose.connect("mongodb://localhost:27017/todo",{
+
 }).then(() => {
     console.log("Connected to MongoDB");
 }).catch((err) => {
     console.error("MongoDB connection error:", err);
-});
+}); 
+
 
 // Define Schema
 const trySchema = new mongoose.Schema({
@@ -25,27 +28,7 @@ const trySchema = new mongoose.Schema({
 // Create Model
  const Item = mongoose.model("Item", trySchema);
 
-// Create an item
-const todo = new Item({
-    name: "Create some videos"
-});
- todo.save();
 
-const todo2 = new Item({
-  name:"Learn DSA"
-
-});
-const todo3 = new Item({
-  name:"Learn React"
-
-});
-const todo4 = new Item({
-  name:"Take some Rest"
-
-});
-todo2.save();
-todo3.save();
-todo4.save();
 
 app.get("/", async function (req, res) {
 
